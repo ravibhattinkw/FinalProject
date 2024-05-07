@@ -10,6 +10,8 @@ pipeline {
                     userRemoteConfigs: [[url: 'https://github.com/ravibhattinkw/FinalProject.git']],
                     extensions: [[$class: 'CloneOption', depth: 1, noTags: true, reference: '', shallow: true]]
                 ])
+                sh " echo path of the checkout file: "
+                sh " pwd"
             }
         }
         // Add more stages as needed
