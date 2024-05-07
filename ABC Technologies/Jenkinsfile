@@ -1,0 +1,21 @@
+pipeline
+{
+	agent any
+	trigger{
+		pollSCM ('* * * * *')
+	}
+	
+	stages
+	{
+		stage ('Code checkout')
+		{
+			steps
+			{
+				sh "echo this is a test jenkinsfile pipeline"
+				git https://github.com/ravibhattinkw/FinalProject.git
+				
+			}
+		}
+	
+	}
+}
