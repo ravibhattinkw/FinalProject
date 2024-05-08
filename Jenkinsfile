@@ -14,7 +14,41 @@ pipeline {
                 sh " pwd"
             }
         }
-        // Add more stages as needed
+        stage('Code compile') {
+            steps {
+                sh "echo ==================================="
+                sh "echo Maven Compile"
+                sh "echo ==================================="
+                dir('ABC*') 
+                {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+        stage('Code Test') {
+            steps {
+                sh "echo ==================================="
+                sh "echo Maven Test"
+                sh "echo ==================================="
+                dir('ABC*') 
+                {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        stage('Code Package') {
+            steps {
+                sh "echo ==================================="
+                sh "echo Maven package"
+                sh "echo ==================================="
+                dir('ABC*') 
+                {
+                    sh 'mvn package'
+                }
+            }
+        }
+        // Add more stages as needed        
     }
     // Add post-build actions or other pipeline configurations
 }
