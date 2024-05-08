@@ -60,9 +60,11 @@ pipeline {
         {
             steps 
             {
-                docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKER_CREDENTIALS_ID}") 
-                {
-                    docker.image ("ravibhattinkw/abc_tech:$BUILD_NUMBER").push()
+                script {
+                    docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKER_CREDENTIALS_ID}") 
+                    {
+                        docker.image ("ravibhattinkw/abc_tech:$BUILD_NUMBER").push()
+                    }
                 }
             }
         }
