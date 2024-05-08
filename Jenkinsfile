@@ -19,7 +19,7 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo Compile"
                 sh "echo ==================================="
-                sh '/opt/mvn clean compile'
+                sh '/opt/maven/bin/mvn clean compile'
             }
         }
         stage('Code Test') {
@@ -27,9 +27,9 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo Test"
                 sh "echo ==================================="
-                dir('ABC\' Technologies') 
+                dir("'ABC\' Technologies'") 
                 {
-                    sh '/opt/mvn test'
+                    sh '/opt/maven/bin/mvn test'
                 }
             }
         }
@@ -39,9 +39,9 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo package"
                 sh "echo ==================================="
-                dir('ABC\' Technologies') 
+                dir("'ABC Technologies'") 
                 {
-                    sh '/opt/mvn package'
+                    sh '/opt/maven/bin/mvn package'
                 }
             }
         }
