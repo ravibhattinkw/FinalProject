@@ -55,7 +55,7 @@ pipeline {
             steps {
                 sh "cd /var/lib/jenkins/workspace/$JOB_NAME/'ABC Technologies'/target && cp ABCtechnologies-1.0.war /var/lib/jenkins/workspace/$JOB_NAME/abc_tech.war && ls -ltr /var/lib/jenkins/workspace/$JOB_NAME/abc_tech.war"
                 //sh "ls -ltr abc_tech.war"
-                sh 'docker build -t abc_tech:$BUILD_NUMBER .'
+                sh 'docker build -t abc_tech:${BUILD_NUMBER} /var/lib/jenkins/workspace/PipelineJenkinsfile'
                 sh 'docker tag abc_tech:$BUILD_NUMBER ravibhattinkw/abc_tech:$BUILD_NUMBER'
             }
         }
