@@ -17,9 +17,9 @@ pipeline {
         stage('Code compile') {
             steps {
                 sh "echo ==================================="
-                sh "echo Maven Compile"
+                sh "echo Compile"
                 sh "echo ==================================="
-                dir('ABC*') 
+                dir('ABC Technologies') 
                 {
                     sh 'mvn clean compile'
                 }
@@ -28,9 +28,9 @@ pipeline {
         stage('Code Test') {
             steps {
                 sh "echo ==================================="
-                sh "echo Maven Test"
+                sh "echo Test"
                 sh "echo ==================================="
-                dir('ABC*') 
+                dir('ABC Technologies') 
                 {
                     sh 'mvn test'
                 }
@@ -40,9 +40,9 @@ pipeline {
         stage('Code Package') {
             steps {
                 sh "echo ==================================="
-                sh "echo Maven package"
+                sh "echo package"
                 sh "echo ==================================="
-                dir('ABC*') 
+                dir('ABC Technologies') 
                 {
                     sh 'mvn package'
                 }
