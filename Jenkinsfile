@@ -19,10 +19,7 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo Compile"
                 sh "echo ==================================="
-                dir('ABC\' Technologies') 
-                {
-                    sh '/opt/mvn clean compile'
-                }
+                sh '/opt/mvn clean compile'
             }
         }
         stage('Code Test') {
