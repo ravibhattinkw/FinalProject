@@ -19,9 +19,7 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo Compile"
                 sh "echo ==================================="
-                dir('ABC\ Technology/') {
-                    sh '/opt/maven/bin/mvn clean compile'
-                }
+                sh "cd 'ABC Technology' && /opt/maven/bin/mvn clean compile"
             }
         }
         stage('Code Test') {
