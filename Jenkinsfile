@@ -1,8 +1,17 @@
 pipeline {
     agent any
-    stages {
-        stage('Code checkout') {
-            steps {
+    environment {
+        DOCKERHUB_CREDENTIALS_ID = credentials ('dockerhubJenkins')
+        DOCKER_REGISTRY = "https://index.docker.io/v1/"
+        DOCKER_IMAGE_TAG = "latest"
+    }
+    
+    stages 
+    {
+        stage('Code checkout') 
+        {
+            steps 
+            {
                 sh "echo this is a test Jenkinsfile pipeline"
                 checkout([
                     $class: 'GitSCM',
@@ -39,7 +48,25 @@ pipeline {
                 sh "cd 'ABC Technologies' && /opt/maven/bin/mvn package"
             }
         }
-        // Add more stages as needed        
+        // Add more stages as needed
+        stage('Build Docker Image') {
+            steps {
+                sh 'cp /var/lib/jenkins/workspace/$JOB_NAME/ABC Technologies/target/ABCtechnologies-1.0.war abc_tech.war'
+                sh 'docker build -t abc_tech:$BUILD_NUMBER .'
+                sh 'docker tag abc_tech:$BUILD_NUMBER ravibhattinkw/abc_tech:$BUILD_NUMBER'
+            }
+        }
+        stage('Push Docker Image')
+        {
+            steps 
+            {
+                docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKER_CREDENTIALS_ID}") 
+                {
+                    docker.image ("ravibhattinkw/abc_tech:$BUILD_NUMBER").push()
+                }
+            }
+        }
     }
+    
     // Add post-build actions or other pipeline configurations
 }
