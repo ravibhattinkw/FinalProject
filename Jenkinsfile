@@ -19,6 +19,7 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo Compile"
                 sh "echo ==================================="
+                sh "cd 'ABC*"
                 sh '/opt/maven/bin/mvn clean compile'
             }
         }
