@@ -19,9 +19,9 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo Compile"
                 sh "echo ==================================="
-                dir('ABC Technologies') 
+                dir('ABC\' Technologies') 
                 {
-                    sh 'mvn clean compile'
+                    sh '/opt/mvn clean compile'
                 }
             }
         }
@@ -30,9 +30,9 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo Test"
                 sh "echo ==================================="
-                dir('ABC Technologies') 
+                dir('ABC\' Technologies') 
                 {
-                    sh 'mvn test'
+                    sh '/opt/mvn test'
                 }
             }
         }
@@ -42,9 +42,9 @@ pipeline {
                 sh "echo ==================================="
                 sh "echo package"
                 sh "echo ==================================="
-                dir('ABC Technologies') 
+                dir('ABC\' Technologies') 
                 {
-                    sh 'mvn package'
+                    sh '/opt/mvn package'
                 }
             }
         }
