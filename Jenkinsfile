@@ -8,11 +8,11 @@ pipeline {
     
     stages 
     {
+        /*
         stage('Code checkout') 
         {
             steps 
             {
-                /*
                 sh "echo this is a test Jenkinsfile pipeline"
                 checkout([
                     $class: 'GitSCM', */
