@@ -63,6 +63,7 @@ pipeline {
         {
             steps 
             {
+                sh 'echo Pushing image to docker hub'
                 script {
                     docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKER_CREDENTIALS_ID}") 
                     {
