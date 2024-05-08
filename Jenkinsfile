@@ -51,8 +51,8 @@ pipeline {
         // Add more stages as needed
         stage('Build Docker Image') {
             steps {
-                sh "cp -f /var/lib/jenkins/workspace/$JOB_NAME/ABC\ Technologies/target/ABCtechnologies-1.0.war abc_tech.war"
-                sh "ls -ltr abc_tech.war"
+                sh "cd /var/lib/jenkins/workspace/$JOB_NAME/'ABC Technologies'/target && cp ABCtechnologies-1.0.war abc_tech.war && ls -ltr abc_tech.war"
+                //sh "ls -ltr abc_tech.war"
                 sh 'docker build -t abc_tech:$BUILD_NUMBER .'
                 sh 'docker tag abc_tech:$BUILD_NUMBER ravibhattinkw/abc_tech:$BUILD_NUMBER'
             }
