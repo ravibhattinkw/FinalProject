@@ -65,7 +65,7 @@ pipeline {
             {
                 sh 'echo Pushing image to docker hub'
                 script {
-                    docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKER_CREDENTIALS_ID}") 
+                    docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKERHUB_CREDENTIALS_ID}") 
                     {
                         docker.image ("ravibhattinkw/abc_tech:$BUILD_NUMBER").push()
                     }
