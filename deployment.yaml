@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
       - name: abctech-container
-        image: ravibhattinkw/<your-image-name>:<tag>
+        image: ravibhattinkw/abc_tech:18
         ports:
         - containerPort: 8090
+      imagePullSecrets:
+      - name: dockerhub-secret
