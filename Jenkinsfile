@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKERHUB_CREDENTIALS_ID = credentials ('dockerhubJenkins')
-        DOCKER_REGISTRY = "https://index.docker.io/v1/"
+        DOCKER_REGISTRY = "https://hub.docker.com/"
         DOCKER_IMAGE_TAG = "latest"
     }
     
