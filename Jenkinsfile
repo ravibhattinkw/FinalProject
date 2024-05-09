@@ -74,6 +74,12 @@ pipeline {
                 }*/
             }
         }
+        stage('Run Docker')
+        {
+            steps {
+                sh 'docker run -itd -P ravibhattinkw/abc_tech:$BUILD_NUMBER'
+            }
+        }
     }
     
     // Add post-build actions or other pipeline configurations
