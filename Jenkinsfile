@@ -83,4 +83,9 @@ pipeline {
     }
     
     // Add post-build actions or other pipeline configurations
+    post{
+        always{
+            sh 'docker logout'
+        }
+    }
 }
