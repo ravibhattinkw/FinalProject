@@ -64,12 +64,14 @@ pipeline {
             steps 
             {
                 sh 'echo Pushing image to docker hub'
-                script {
+                sh 'echo $DOCKERHUB_CREDENTIALS_ID_PSW | docker login -u $DOCKERHUB_CREDENTIALS_ID_USR --password-stdin'
+                sh 'docker push ravibhattinkw/abc_tech:$BUILD_NUMBER'
+                /*script {
                     docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKERHUB_CREDENTIALS_ID}") 
                     {
                         docker.image ("ravibhattinkw/abc_tech:$BUILD_NUMBER").push()
                     }
-                }
+                }*/
             }
         }
     }
