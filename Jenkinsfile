@@ -8,16 +8,15 @@ pipeline {
     
     stages 
     {
-        /*
         stage('Code checkout') 
         {
             steps 
             {
                 sh "echo this is a test Jenkinsfile pipeline"
                 checkout([
-                    $class: 'GitSCM', */
+                    $class: 'GitSCM', 
                     //branches: [[name: '*/master']],
-                    /* userRemoteConfigs: [[url: 'https://github.com/ravibhattinkw/FinalProject.git']],
+                    userRemoteConfigs: [[url: 'https://github.com/ravibhattinkw/FinalProject.git']],
                     extensions: [[$class: 'CloneOption', depth: 1, noTags: true, reference: '', shallow: true]]
                 ])
                 sh " echo path of the checkout file: "
@@ -49,7 +48,6 @@ pipeline {
                 sh "cd 'ABC Technologies' && /opt/maven/bin/mvn package"
             }
         }
-        */
         // Add more stages as needed
         stage('Build Docker Image') {
             steps {
