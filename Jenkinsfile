@@ -54,7 +54,7 @@ pipeline {
                 sh "cd /var/lib/jenkins/workspace/$JOB_NAME/'ABC Technologies'/target && cp ABCtechnologies-1.0.war /var/lib/jenkins/workspace/$JOB_NAME/abc_tech.war && ls -ltr /var/lib/jenkins/workspace/$JOB_NAME/abc_tech.war"
                 //sh "ls -ltr abc_tech.war"
                 sh 'docker build -t abc_tech:${BUILD_NUMBER} /var/lib/jenkins/workspace/PipelineJenkinsfile'
-                sh 'docker tag abc_tech:$BUILD_NUMBER ravibhattinkw/abc_tech:$BUILD_NUMBER'
+                sh 'docker tag abc_tech:$BUILD_NUMBER ravibhattinkw/abc_tech:$BUILD_NUMBER ravibhattinkw/abc_tech:latest'
             }
         }
         stage('Push Docker Image')
@@ -63,7 +63,7 @@ pipeline {
             {
                 sh 'echo Pushing image to docker hub'
                 sh 'echo $DOCKERHUB_CREDENTIALS_ID_PSW | docker login -u $DOCKERHUB_CREDENTIALS_ID_USR --password-stdin'
-                sh 'docker push ravibhattinkw/abc_tech:$BUILD_NUMBER'
+                sh 'docker push ravibhattinkw/abc_tech:latest'
                 /*script {
                     docker.withRegistry( "${DOCKER_REGISTRY}","${DOCKERHUB_CREDENTIALS_ID}") 
                     {
@@ -75,7 +75,7 @@ pipeline {
         stage('Run Docker')
         {
             steps {
-                sh 'docker run -itd -p 8090:8090 ravibhattinkw/abc_tech:$BUILD_NUMBER'
+                sh 'docker run -itd -p 8090:8090 ravibhattinkw/abc_tech:latest'
                 sh 'docker ps'
             }
         }
