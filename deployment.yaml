@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: abctech-container
-        image: ravibhattinkw/abc_tech:18
+        image: ravibhattinkw/abc_tech:latest
         ports:
         - containerPort: 8090
       imagePullSecrets:
