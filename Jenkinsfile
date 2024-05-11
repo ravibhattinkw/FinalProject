@@ -75,7 +75,7 @@ pipeline {
         stage('Run Docker')
         {
             steps {
-                sh 'docker run -itd -p 8090:80 ravibhattinkw/abc_tech:$BUILD_NUMBER'
+                sh 'docker run -itd -p 8090:8090 ravibhattinkw/abc_tech:$BUILD_NUMBER'
                 sh 'docker ps'
             }
         }
