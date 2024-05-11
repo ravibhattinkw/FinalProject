@@ -72,18 +72,18 @@ pipeline {
                 }*/
             }
         }
-        stage('Run Docker')
+        /*stage('Run Docker')
         {
             steps {
                 sh 'docker run -itd -p 8090:80 ravibhattinkw/abc_tech:$BUILD_NUMBER'
                 sh 'docker ps'
             }
-        }
+        }*/
         
         stage('Deploy Docker image on k8s')
         {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f deployment.yaml --validate=false'
                 sh 'kubectl get pods'
                 sh 'sleep 5'
                 sh 'kubectl get pods'
