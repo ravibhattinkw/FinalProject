@@ -82,13 +82,36 @@ pipeline {
         
         stage('Deploy Docker image on k8s')
         {
-            steps {
-                sh 'kubectl apply -f deployment.yaml --validate=false'
-                sh 'kubectl get pods'
-                sh 'sleep 5'
-                sh 'kubectl get pods'
-                sh 'kubectl create -f service.yaml'
-                sh 'kubectl get service -o wide'
+            steps 
+            {
+                script 
+                {
+                    // Apply deployment YAML
+                    def deploymentApply = sh(script: 'kubectl apply -f deployment.yaml', returnStatus: true)
+                    if (deploymentApply != 0) 
+                    {
+                        error 'Failed to apply deployment YAML'
+                    }
+        
+                    // Check pod status
+                    sh 'kubectl get pods'
+        
+                    // Wait for pods to be ready
+                    sh 'kubectl wait --for=condition=ready pod --all --timeout=300s'
+        
+                    // Check pod status again
+                    sh 'kubectl get pods'
+        
+                    // Apply service YAML
+                    def serviceApply = sh(script: 'kubectl apply -f service.yaml', returnStatus: true)
+                    if (serviceApply != 0) 
+                    {
+                        error 'Failed to apply service YAML'
+                    }
+        
+                    // Check service status
+                    sh 'kubectl get service -o wide'
+                }
             }
         }
     }
