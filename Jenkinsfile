@@ -80,7 +80,7 @@ pipeline {
                 sh 'docker run -itd -p 8090:8090 ravibhattinkw/abc_tech:latest'
                 sh 'docker ps'
             }
-        }*/
+        }
         
         stage('Deploy Docker image on k8s')
         {
@@ -115,7 +115,7 @@ pipeline {
                     sh 'kubectl get service -o wide'
                 }
             }
-        }
+        }*/
     }
     
     // Add post-build actions or other pipeline configurations
