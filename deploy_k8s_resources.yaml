@@ -1,0 +1,22 @@
+---
+- name: Deploy Kubernetes resources
+  hosts: localhost
+  become: no
+  tasks:
+    - name: Apply deployment
+      shell: kubectl apply -f deployment.yaml
+      register: deployment_result
+      #ignore_errors: yes
+
+    - name: Apply service
+      shell: kubectl apply -f service.yaml
+      register: service_result
+      #ignore_errors: yes
+
+    - name: Display deployment status
+      debug:
+        msg: "{{ deployment_result.stdout_lines }}"
+
+    - name: Display service status
+      debug:
+        msg: "{{ service_result.stdout_lines }}"
