@@ -74,13 +74,13 @@ pipeline {
                 }*/
             }
         }
-        stage('Run Docker')
+        /*stage('Run Docker')
         {
             steps {
                 sh 'docker run -itd -p 8090:8090 ravibhattinkw/abc_tech:latest'
                 sh 'docker ps'
             }
-        }
+        }*/
         
         stage('Deploy Docker image on k8s')
         {
